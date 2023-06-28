@@ -8,6 +8,6 @@ import './index.css';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <App />
-    <ToastContainer autoClose={1000} />
+    <ToastContainer autoClose={1500} />
   </React.StrictMode>
 );

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledBtn = styled.button`
-  display: flex;
+  display: flex;e
   justify-content: center;
 
   opacity: 0.8;

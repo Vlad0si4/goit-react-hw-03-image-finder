@@ -1,14 +1,25 @@
 import React from 'react';
-import { Img, StyledGallery } from './ImageGallery.styled';
+import { StyledGallery } from './ImageGallery.styled';
+import { ImageGalleryItem } from '../ImageGalleryItem/ImageGalleryItem';
+import PropTypes from 'prop-types';
 
 export const ImageGallery = ({ images = [] }) => {
   return (
     <StyledGallery>
-      {images.map(({ id, webformatURL, tags }) => (
-        <li key={id}>
-          <Img src={webformatURL} alt={tags} width="360" />
-        </li>
+      {images.map(image => (
+        <ImageGalleryItem {...image} key={image.id} />
       ))}
     </StyledGallery>
   );
+};
+
+ImageGallery.propType = {
+  images: PropTypes.arrayOf(
+    PropTypes.shape({
+      webformatURL: PropTypes.string.isRequired,
+      tags: PropTypes.string.isRequired,
+      largeImageURL: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+    })
+  ),
 };

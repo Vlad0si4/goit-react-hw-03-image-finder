@@ -15,12 +15,12 @@ export const StyledGallery = styled.ul`
 }
 `;
 
-export const Img = styled.img`
-  // width: 100%;
-  // height: 100%;
+// export const Img = styled.img`
+//   // width: 100%;
+//   // height: 100%;
 
-  height: 250px;
-  width: 360px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-`;
+//   height: 250px;
+//   width: 360px;
+//   border-radius: 10px;
+//   margin-bottom: 20px;
+// `;

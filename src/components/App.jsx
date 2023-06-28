@@ -5,6 +5,7 @@ import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Button } from './Button/Button';
 import { toast } from 'react-toastify';
 import { Loader } from './Loader/Loader';
+import PropTypes from 'prop-types';
 
 export class App extends Component {
   state = {
@@ -13,10 +14,11 @@ export class App extends Component {
     images: [],
     showBtn: false,
     loading: false,
+    photosLoaded: false,
   };
 
   async componentDidUpdate(_, prevState) {
-    const { query, page } = this.state;
+    const { query, page, photosLoaded } = this.state;
 
     if (query !== prevState.query || page !== prevState.page) {
       try {
@@ -27,11 +29,13 @@ export class App extends Component {
           }));
           if (hits.length === 0) {
             return toast.info(
-              'Sorry, there are no images matching your search query. Please try again'
+              'Sorry, there are no images matching your search query.'
             );
           }
-          if (query !== hits.length) {
-            toast.success(`We found ${totalHits} photo`);
+
+          if (!photosLoaded) {
+            this.setState({ photosLoaded: true });
+            toast.success(`We found ${totalHits} photos`);
           }
         });
       } catch (error) {
@@ -55,6 +59,7 @@ export class App extends Component {
       images: [],
       showBtn: false,
       loading: true,
+      photosLoaded: false,
     });
   };
   onButtonLoadMore = () => {
@@ -74,3 +79,11 @@ export class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  page: PropTypes.number,
+  images: PropTypes.string,
+  showBtn: PropTypes.bool,
+  loading: PropTypes.bool,
+  photosLoaded: PropTypes.bool,
+};
