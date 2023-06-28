@@ -7,7 +7,9 @@ export const StyledBtn = styled.button`
   opacity: 0.8;
   cursor: pointer;
   margin-left: auto;
-  margin-right: auto;
+  margin: 20px auto 20px auto;
+  // margin-bottom: 20px;
+  // margin-bottom: 20px;
   border-radius: 10px;
 
   border: none;
